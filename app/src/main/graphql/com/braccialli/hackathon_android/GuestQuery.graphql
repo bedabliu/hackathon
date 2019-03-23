@@ -12,6 +12,7 @@ fragment hostsFields on Host {
 
 query GuestQuery($guest:String!){
 	guest(id:$guest) {
+	  id,
       firstname,
       lastname,
       email,

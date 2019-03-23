@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="server">"http://172.16.24.155:3000/graphql</string>
+    <string name="server">"http://10.0.2.2:3000/graphql</string>
 
 </resources>

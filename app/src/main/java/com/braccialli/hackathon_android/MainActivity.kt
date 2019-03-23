@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
 
         val okHttpClient = OkHttpClient()
 
-        var apolloClient:ApolloClient = ApolloClient.builder().serverUrl("http://172.16.14.210:3000/graphql")
+        var apolloClient:ApolloClient = ApolloClient.builder().serverUrl(getString(R.string.server))
                 .okHttpClient(okHttpClient)
                 .build()
         apolloClient.query(
@@ -45,7 +45,9 @@ class MainActivity : AppCompatActivity() {
         ).enqueue(object : ApolloCall.Callback<AllGuestsQuery.Data>(){
             override fun onResponse(response: Response<AllGuestsQuery.Data>) {
                 if(response.data()!= null){
-                    (viewAdapter as GuestsAdapter).updateData(response.data()!!.getAllGuests)
+                    runOnUiThread {
+                        (viewAdapter as GuestsAdapter).updateData(response.data()!!.getAllGuests)
+                    }
                 }
             }
 

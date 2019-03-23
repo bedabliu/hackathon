@@ -12,6 +12,7 @@ fragment hostFields on Host {
 
 query AllGuestsQuery($orderBy:String){
 	getAllGuests(orderBy:$orderBy) {
+	  id,
       firstname,
       lastname,
       email,

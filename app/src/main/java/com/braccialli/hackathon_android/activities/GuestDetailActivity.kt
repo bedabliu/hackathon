@@ -18,6 +18,8 @@ class GuestDetailActivity : AppCompatActivity() {
         val it = intent
         val guestId = it.getStringExtra("guestId")
 
+        btnClose.setOnClickListener { finish() }
+
         GuestModel().getGuestDetail(getString(R.string.server), guestId) { guest: GuestQuery.Guest?, error: ApolloException? ->
             guestCallback(guest, error)
         }
@@ -41,7 +43,7 @@ class GuestDetailActivity : AppCompatActivity() {
 
         guest.location().let {
             txtLocationName.setText(it?.fragments()?.locatFields()?.name())
-            txtLocationName.setText(it?.fragments()?.locatFields()?.address())
+            txtLocationAddress.setText(it?.fragments()?.locatFields()?.address())
         }
 
         guest.host().let {
