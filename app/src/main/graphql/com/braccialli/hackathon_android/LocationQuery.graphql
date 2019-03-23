@@ -1,0 +1,24 @@
+fragment deviceFields on Device {
+  name,
+  accesskey,
+  id
+}
+
+fragment inviteFields on Invite {
+  firstname,
+  lastname
+}
+
+query LocationQuery($orderBy:String){
+	getAllLocations(orderBy:$orderBy) {
+      name,
+      address,
+      contact,
+      devices {
+      	...deviceFields
+      },
+      invites {
+      	...inviteFields
+      }
+  }
+}

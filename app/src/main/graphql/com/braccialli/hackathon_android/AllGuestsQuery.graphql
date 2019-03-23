@@ -1,0 +1,26 @@
+fragment locationFields on Location {
+  name,
+  address,
+  contact
+}
+
+fragment hostFields on Host {
+  firstname,
+  lastname,
+  email
+}
+
+query AllGuestsQuery($orderBy:String){
+	getAllGuests(orderBy:$orderBy) {
+      firstname,
+      lastname,
+      email,
+      company,
+      location{
+      	...locationFields
+      },
+      host{
+      	...hostFields
+      }
+  }
+}

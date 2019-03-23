@@ -1,0 +1,26 @@
+fragment locatFields on Location {
+  name,
+  address,
+  contact
+}
+
+fragment hostsFields on Host {
+  firstname,
+  lastname,
+  email
+}
+
+query GuestQuery($guest:String!){
+	guest(id:$guest) {
+      firstname,
+      lastname,
+      email,
+      company,
+      location{
+      	...locatFields
+      },
+      host{
+      	...hostsFields
+      }
+  }
+}

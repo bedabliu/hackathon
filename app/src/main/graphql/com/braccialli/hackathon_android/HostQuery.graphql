@@ -1,0 +1,10 @@
+query HostQuery($orderBy:String) {
+  getAllHosts(orderBy:$orderBy) {
+      firstname,
+      lastname,
+      email,
+      department,
+      mobile,
+      photo
+  }
+}
