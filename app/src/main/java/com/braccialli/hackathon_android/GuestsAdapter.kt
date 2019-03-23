@@ -19,6 +19,8 @@ class GuestsAdapter() :
     class MyViewHolder(val view:View) : RecyclerView.ViewHolder(view){
         val firsName: TextView = itemView.findViewById<TextView>(R.id.guest_first_name)
         val lastName: TextView = itemView.findViewById<TextView>(R.id.guest_last_name)
+        val hostName: TextView = itemView.findViewById<TextView>(R.id.guest_host_name)
+        val locationName: TextView = itemView.findViewById<TextView>(R.id.guest_location)
     }
 
 
@@ -32,6 +34,8 @@ class GuestsAdapter() :
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.firsName.text = guestsDataset!![position].firstname
         holder.lastName.text = guestsDataset!![position].lastname
+        holder.hostName.text = guestsDataset!![position].host!!.get(0).fragments().hostFields.firstname()
+        holder.locationName.text = guestsDataset!![position].location!!.fragments().locationFields.name()
     }
 
     override fun getItemCount(): Int { if(guestsDataset!=null) return guestsDataset!!.size else return 0 }

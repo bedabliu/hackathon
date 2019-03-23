@@ -45,13 +45,12 @@ class MainActivity : AppCompatActivity() {
         ).enqueue(object : ApolloCall.Callback<AllGuestsQuery.Data>(){
             override fun onResponse(response: Response<AllGuestsQuery.Data>) {
                 if(response.data()!= null){
-
                     (viewAdapter as GuestsAdapter).updateData(response.data()!!.getAllGuests)
                 }
             }
 
             override fun onFailure(e: ApolloException) {
-                e.printStackTrace()//To change body of created functions use File | Settings | File Templates.
+                e.printStackTrace()
             }
 
         })
